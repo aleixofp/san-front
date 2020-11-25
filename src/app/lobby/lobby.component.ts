@@ -1,0 +1,43 @@
+import { Usuario } from './../models/usuario';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-lobby',
+  templateUrl: './lobby.component.html',
+  styleUrls: ['./lobby.component.css']
+})
+export class LobbyComponent implements OnInit {
+
+  usuario: Usuario | undefined;
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    const usuarioLogado = sessionStorage.getItem('usuarioLogado');
+    if (usuarioLogado) {
+      this.usuario = JSON.parse(usuarioLogado);
+      console.log('Usuário logado: ' + this.usuario);
+
+    } else {
+      this.router.navigateByUrl('/login');
+
+    }
+  }
+
+  verificaPermissao(permissao: string){
+    let permitir = false;
+    this.usuario?.permissoes.forEach(p => {
+      if (p.nome === permissao || p.nome === 'ADMIN'){
+        permitir = true;
+      }
+    });
+    return permitir;
+  }
+
+  sair(){
+    sessionStorage.clear();
+    this.router.navigateByUrl('/login');
+  }
+
+}

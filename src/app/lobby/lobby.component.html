@@ -1,0 +1,20 @@
+
+<mat-toolbar color="primary">
+  <mat-icon>school</mat-icon>
+  <span class="titulo">san - sistema de alunos</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="sair()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>sair</span>
+  </button>
+
+</mat-toolbar>
+
+<mat-tab-group>
+  <mat-tab label="Home">
+
+  </mat-tab>
+  <mat-tab label="Alunos" *ngIf="verificaPermissao('VISUALIZAR_ALUNOS')" > Content 2 </mat-tab>
+  <mat-tab label="Professores" *ngIf="verificaPermissao('VISUALIZAR_PROFESSORES')" > Content 3 </mat-tab>
+  <mat-tab label="Usuários" *ngIf="verificaPermissao('VISUALIZAR_USUARIOS')" > Content 3 </mat-tab>
+</mat-tab-group>

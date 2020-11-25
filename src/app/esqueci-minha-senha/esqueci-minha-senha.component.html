@@ -1,0 +1,46 @@
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="emailFormGroup">
+    <form #emailForm="ngForm" [formGroup]="emailFormGroup">
+      <ng-template matStepLabel>Digite seu email</ng-template>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Email" formControlName="email" required>
+      </mat-form-field>
+      <div>
+        <button [disabled]="!emailForm.valid" mat-button (click)="verificarEmail(stepper)">Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="respostaFormGroup" label="Digite sua resposta secreta">
+    <form #respostaForm="ngForm" [formGroup]="respostaFormGroup">
+      <mat-form-field>
+        <mat-label>Sua pergunta secreta</mat-label>
+        <input matInput formControlName="pergunta" placeholder="Sua pergunta secreta">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Sua resposta</mat-label>
+        <input matInput formControlName="resposta" placeholder="Digite sua resposta secreta"
+               required>
+      </mat-form-field>
+      <div>
+        <button [disabled]="!respostaForm.valid" mat-button (click)="verificarResposta(stepper)">Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form #novaSenhaForm="ngForm" [formGroup]="novaSenhaFormGroup">
+      <ng-template matStepLabel>Troque sua senha</ng-template>
+      <mat-form-field>
+        <mat-label>Nova senha</mat-label>
+        <input matInput type="text" placeholder="Nova senha" formControlName="novaSenha" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Digite novamente</mat-label>
+        <input matInput type="text" placeholder="Digite novamente" (blur)="verificarDigiteNovamente()" formControlName="digiteNovamenteNovaSenha" required>
+      </mat-form-field>
+      <div>
+        <button [disabled]="!novaSenhaForm.valid" mat-button matStepperNext (click)="efetuarTrocaSenha()">Efetuar troca</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
