@@ -1,6 +1,7 @@
 import { Usuario } from './../models/usuario';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-lobby',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class LobbyComponent implements OnInit {
 
   usuario: Usuario | undefined;
+  selectedTab = 0;
 
   constructor(private router: Router) { }
 
@@ -38,6 +40,10 @@ export class LobbyComponent implements OnInit {
   sair(){
     sessionStorage.clear();
     this.router.navigateByUrl('/login');
+  }
+
+  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+    this.selectedTab = tabChangeEvent.index;
   }
 
 }

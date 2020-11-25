@@ -4,5 +4,6 @@ export interface Usuario {
   login: string;
   senha: string;
   email: string;
+  tipo: string;
   permissoes: Permissao[];
 }

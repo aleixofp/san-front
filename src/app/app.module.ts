@@ -23,10 +23,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { EsqueciMinhaSenhaComponent } from './esqueci-minha-senha/esqueci-minha-senha.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
+import { CpfPipe } from './pipes/cpf.pipe';
+import { HomeComponent } from './home/home.component';
+import { DetalhesAlunoComponent } from './detalhes-aluno/detalhes-aluno.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +41,10 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
     LoginComponent,
     EsqueciMinhaSenhaComponent,
     LobbyComponent,
-    ListaAlunosComponent
+    ListaAlunosComponent,
+    CpfPipe,
+    HomeComponent,
+    DetalhesAlunoComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +65,10 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule,
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

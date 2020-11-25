@@ -10,11 +10,51 @@
 
 </mat-toolbar>
 
-<mat-tab-group>
-  <mat-tab label="Home">
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+  <mat-tab tabindex="0">
+    <ng-template mat-tab-label>
+      <mat-icon *ngIf="selectedTab == 0" >home</mat-icon>
+      Home
+    </ng-template>
+
+    <ng-template matTabContent>
+      <app-home></app-home>
+    </ng-template>
 
   </mat-tab>
-  <mat-tab label="Alunos" *ngIf="verificaPermissao('VISUALIZAR_ALUNOS')" > Content 2 </mat-tab>
-  <mat-tab label="Professores" *ngIf="verificaPermissao('VISUALIZAR_PROFESSORES')" > Content 3 </mat-tab>
-  <mat-tab label="Usuários" *ngIf="verificaPermissao('VISUALIZAR_USUARIOS')" > Content 3 </mat-tab>
+  <mat-tab tabindex="1">
+    <ng-template mat-tab-label *ngIf="verificaPermissao('VISUALIZAR_ALUNOS')" >
+      <mat-icon *ngIf="selectedTab == 1">people</mat-icon>
+      Alunos
+    </ng-template>
+
+    <ng-template matTabContent>
+      <app-lista-alunos></app-lista-alunos>
+    </ng-template>
+
+  </mat-tab>
+  <mat-tab tabindex="2" *ngIf="false" >
+
+    <ng-template mat-tab-label >
+      <mat-icon *ngIf="selectedTab == 2">people</mat-icon>
+      Professores
+    </ng-template>
+
+    <ng-template matTabContent>
+      <app-lista-alunos></app-lista-alunos>
+    </ng-template>
+
+  </mat-tab>
+  <mat-tab tabindex="3" *ngIf="false">
+
+    <ng-template mat-tab-label *ngIf="verificaPermissao('VISUALIZAR_USUARIOS')" >
+      <mat-icon *ngIf="selectedTab == 3">people</mat-icon>
+      Usuários
+    </ng-template>
+
+    <ng-template matTabContent>
+      <app-lista-alunos></app-lista-alunos>
+    </ng-template>
+
+  </mat-tab>
 </mat-tab-group>
