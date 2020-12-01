@@ -1,4 +1,4 @@
-import { DetalhesAlunoComponent } from './../detalhes-aluno/detalhes-aluno.component';
+import { DetalhesAlunoComponent } from './detalhes-aluno/detalhes-aluno.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlunoService } from './../services/aluno.service';
 import { Aluno } from './../models/aluno';

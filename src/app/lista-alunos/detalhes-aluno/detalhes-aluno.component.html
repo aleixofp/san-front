@@ -1,0 +1,33 @@
+<form #form="ngForm">
+  <mat-card >
+    <mat-card-header>
+      <mat-card-title>Dados do aluno</mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput placeholder="Nome completo" [(ngModel)]="cadastrarAluno.nome" name="nome" required />
+        </mat-form-field>
+        <mat-form-field>
+          <input maxlength="14" (blur)="formatarCpf()" matInput [(ngModel)]="cadastrarAluno.cpf" placeholder="CPF" name="cpf" required />
+        </mat-form-field>
+        <mat-form-field>
+          <input maxlength="12" (blur)="formatarCpf()" matInput [(ngModel)]="cadastrarAluno.rg" placeholder="RG" name="rg" required />
+        </mat-form-field>
+        <mat-form-field>
+          <input (blur)="verificarEmail()" matInput [(ngModel)]="cadastrarAluno.email" type="email" placeholder="Email" name="email" required />
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="cadastrarAluno.dataNascimento" placeholder="Data de nascimento" required>
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker required #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="!form.valid" (click)="salvar()"  mat-raised-button color="primary">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

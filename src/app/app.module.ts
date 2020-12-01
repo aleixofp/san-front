@@ -13,7 +13,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,15 +24,17 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { EsqueciMinhaSenhaComponent } from './esqueci-minha-senha/esqueci-minha-senha.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { CpfPipe } from './pipes/cpf.pipe';
 import { HomeComponent } from './home/home.component';
-import { DetalhesAlunoComponent } from './detalhes-aluno/detalhes-aluno.component';
+import { DetalhesAlunoComponent } from './lista-alunos/detalhes-aluno/detalhes-aluno.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,10 @@ import { DetalhesAlunoComponent } from './detalhes-aluno/detalhes-aluno.componen
     MatTabsModule,
     MatTableModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatPaginatorModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

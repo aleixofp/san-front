@@ -1,3 +1,4 @@
+import { CadastrarAluno } from './../models/cadastrar-aluno';
 import { Aluno } from './../models/aluno';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -27,7 +28,7 @@ export class AlunoService {
       .pipe(catchError(error => this.handleError(error)));
   }
 
-  cadastrarAluno(aluno: Aluno): Observable<Aluno> {
+  cadastrarAluno(aluno: CadastrarAluno): Observable<Aluno> {
     return this.httpClient.post<Aluno>(this.url, this.httpOptions)
       .pipe(catchError(error => this.handleError(error)));
   }

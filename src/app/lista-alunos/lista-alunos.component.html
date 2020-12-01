@@ -41,6 +41,8 @@
 
       <tr mat-header-row *matHeaderRowDef="colunas"></tr>
       <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+
+      <mat-paginator [length]="10" [pageSize]="1" [pageSizeOptions]="[5, 10, 25, 50, 100]"></mat-paginator>
     </table>
 
     <button (click)="abrirModalCadastro()" class="botao-add" mat-raised-button color="primary" aria-label="Adicionar novo aluno">
