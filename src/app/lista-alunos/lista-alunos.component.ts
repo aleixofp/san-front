@@ -2,9 +2,10 @@ import { DetalhesAlunoComponent } from './detalhes-aluno/detalhes-aluno.componen
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlunoService } from './../services/aluno.service';
 import { Aluno } from './../models/aluno';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-lista-alunos',
@@ -17,6 +18,8 @@ export class ListaAlunosComponent implements OnInit {
   listaAlunos: Aluno[] = [];
   dataSource: MatTableDataSource<Aluno> = new MatTableDataSource<Aluno>();
 
+  @ViewChild('paginator', {static: false}) paginator = {} as MatPaginator;
+
   constructor(private alunoService: AlunoService,
               private snackBar: MatSnackBar,
               private dialog: MatDialog) { }
@@ -26,6 +29,7 @@ export class ListaAlunosComponent implements OnInit {
       .subscribe(result => {
         this.listaAlunos = result;
         this.dataSource = new MatTableDataSource<Aluno>(this.listaAlunos);
+        this.dataSource.paginator = this.paginator;
       });
   }
 

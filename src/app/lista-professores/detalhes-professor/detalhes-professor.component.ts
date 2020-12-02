@@ -1,44 +1,40 @@
-import { CursoService } from './../../services/curso.service';
-import { Curso } from './../../models/curso';
-import { CadastrarAluno } from './../../models/cadastrar-aluno';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { CadastrarProfessor } from './../../models/cadastrar-professor';
+import { ProfessorService } from './../../services/professor.service';
+import { Departamento } from '../../models/departamento';
+import { DepartamentoService } from '../../services/departamento.service';
+import { CadastrarCurso } from '../../models/cadastrar-curso';
+import { CursoService } from '../../services/curso.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Aluno } from 'src/app/models/aluno';
-import { AlunoService } from 'src/app/services/aluno.service';
-import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
-  selector: 'app-detalhes-aluno',
-  templateUrl: './detalhes-aluno.component.html',
-  styleUrls: ['./detalhes-aluno.component.css']
+  selector: 'app-detalhes-professor',
+  templateUrl: './detalhes-professor.component.html',
+  styleUrls: ['./detalhes-professor.component.css']
 })
-export class DetalhesAlunoComponent implements OnInit {
+export class DetalhesProfessorComponent implements OnInit {
 
-  cadastrarAluno = {} as CadastrarAluno;
-  listaCursos = [] as Curso[];
+  cadastrarProfessor = {} as CadastrarProfessor;
 
-  constructor(public dialogRef: MatDialogRef<DetalhesAlunoComponent>,
+  constructor(public dialogRef: MatDialogRef<DetalhesProfessorComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private snackBar: MatSnackBar,
-              private usuarioService: UsuarioService,
-              private alunoService: AlunoService,
-              private cursoService: CursoService) { }
+              private professorService: ProfessorService,
+              private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-    this.cursoService.lista()
-      .subscribe(result => {
-        this.listaCursos = result;
-      });
+
   }
 
   formatarCpf() {
-    if (this.cadastrarAluno.cpf){
+    if (this.cadastrarProfessor.cpf){
       let somaCpf = 0;
       let indice = 10;
       let cpfValido = true;
-      let digitos = this.cadastrarAluno.cpf.slice(-2);
-      for (const char of this.cadastrarAluno.cpf) {
+      let digitos = this.cadastrarProfessor.cpf.slice(-2);
+      for (const char of this.cadastrarProfessor.cpf) {
         if (indice === 1) {
           break;
         }
@@ -56,7 +52,7 @@ export class DetalhesAlunoComponent implements OnInit {
 
       indice = 11;
       somaCpf = 0;
-      for (const char of this.cadastrarAluno.cpf) {
+      for (const char of this.cadastrarProfessor.cpf) {
         if (indice === 1) {
           break;
         }
@@ -70,20 +66,20 @@ export class DetalhesAlunoComponent implements OnInit {
       }
 
       if (cpfValido){
-        this.alunoService.validarCpf(this.cadastrarAluno.cpf)
+        this.professorService.validarCpf(this.cadastrarProfessor.cpf)
           .subscribe(result => {
             if (result === null){
-              this.cadastrarAluno.cpf = this.cadastrarAluno.cpf.replace(/[^\d]/g, '').replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+              this.cadastrarProfessor.cpf = this.cadastrarProfessor.cpf.replace(/[^\d]/g, '').replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
             } else {
               this.snackBar.dismiss();
               this.snackBar.open('CPF já existente na base. ', 'OK');
-              this.cadastrarAluno.cpf = '';
+              this.cadastrarProfessor.cpf = '';
             }
           });
       } else {
         this.snackBar.dismiss();
         this.snackBar.open('CPF inválido. ', 'OK');
-        this.cadastrarAluno.cpf = '';
+        this.cadastrarProfessor.cpf = '';
       }
     }
 
@@ -92,14 +88,14 @@ export class DetalhesAlunoComponent implements OnInit {
 
   verificarEmail() {
     this.snackBar.dismiss();
-    if (this.cadastrarAluno && this.cadastrarAluno.email){
-      this.usuarioService.verificarEmail(this.cadastrarAluno.email)
+    if (this.cadastrarProfessor && this.cadastrarProfessor.email){
+      this.usuarioService.verificarEmail(this.cadastrarProfessor.email)
         .subscribe(result => {
           if (result) {
             this.snackBar.open('Email já cadastrado no sistema', 'Fechar', {
               duration: 5000
             });
-            this.cadastrarAluno.email = '';
+            this.cadastrarProfessor.email = '';
           }
         });
     }
@@ -107,7 +103,7 @@ export class DetalhesAlunoComponent implements OnInit {
 
   salvar() {
     this.verificarEmail();
-    this.alunoService.cadastrarAluno(this.cadastrarAluno)
+    this.professorService.cadastrarProfessor(this.cadastrarProfessor)
       .subscribe(result => {
         this.dialogRef.close();
       });

@@ -1,17 +1,21 @@
-import { CadastrarAluno } from './../models/cadastrar-aluno';
-import { Aluno } from './../models/aluno';
-import { catchError } from 'rxjs/operators';
+import { CadastrarProfessor } from './../models/cadastrar-professor';
+import { Professor } from './../models/professor';
+import { Departamento } from '../models/departamento';
+import { CadastrarCurso } from '../models/cadastrar-curso';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Curso } from '../models/curso';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlunoService {
+export class ProfessorService {
 
-  url = environment.server_url + '/aluno';
+  url = environment.server_url + '/professor';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,23 +23,23 @@ export class AlunoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAlunos(): Observable<Aluno[]> {
-    return this.httpClient.get<Aluno[]>(this.url + '/lista', this.httpOptions)
+  lista(): Observable<Professor[]> {
+    return this.httpClient.get<Professor[]>(this.url + '/lista', this.httpOptions)
       .pipe(catchError(error => this.handleError(error)));
   }
 
-  desativarAlunoPorId(id: number): Observable<string> {
+  desativarProfessorPorId(id: number): Observable<string> {
     return this.httpClient.get<string>(this.url + '/desativar/' + id, this.httpOptions)
       .pipe(catchError(error => this.handleError(error)));
   }
 
-  cadastrarAluno(aluno: CadastrarAluno): Observable<Aluno> {
-    return this.httpClient.post<Aluno>(this.url, aluno, this.httpOptions)
+  cadastrarProfessor(professor: CadastrarProfessor): Observable<Professor> {
+    return this.httpClient.post<Professor>(this.url, professor, this.httpOptions)
       .pipe(catchError(error => this.handleError(error)));
   }
 
-  validarCpf(cpf: string): Observable<Aluno> {
-    return this.httpClient.get<Aluno>(this.url + '/validarCpf/' + cpf, this.httpOptions)
+  validarCpf(cpf: string): Observable<Professor> {
+    return this.httpClient.get<Professor>(this.url + '/validarCpf/' + cpf, this.httpOptions)
       .pipe(catchError(error => this.handleError(error)));
   }
 

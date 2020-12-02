@@ -1,3 +1,7 @@
+import { DetalhesProfessorComponent } from './lista-professores/detalhes-professor/detalhes-professor.component';
+import { ListaProfessoresComponent } from './lista-professores/lista-professores.component';
+import { ListaDepartamentosComponent } from './lista-departamentos/lista-departamentos.component';
+import { DetalhesCursoComponent } from './lista-cursos/detalhes-curso/detalhes-curso.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { UsuarioService } from './services/usuario.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,6 +39,8 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { CpfPipe } from './pipes/cpf.pipe';
 import { HomeComponent } from './home/home.component';
 import { DetalhesAlunoComponent } from './lista-alunos/detalhes-aluno/detalhes-aluno.component';
+import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
+import { DetalhesDepartamentoComponent } from './lista-departamentos/detalhes-departamento/detalhes-departamento.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +51,13 @@ import { DetalhesAlunoComponent } from './lista-alunos/detalhes-aluno/detalhes-a
     ListaAlunosComponent,
     CpfPipe,
     HomeComponent,
-    DetalhesAlunoComponent
+    DetalhesAlunoComponent,
+    ListaCursosComponent,
+    DetalhesCursoComponent,
+    ListaDepartamentosComponent,
+    DetalhesDepartamentoComponent,
+    ListaProfessoresComponent,
+    DetalhesProfessorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<form #form="ngForm">
+  <mat-card >
+    <mat-card-header>
+      <mat-card-title>Dados do curso</mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput placeholder="Nome do curso" [(ngModel)]="cadastrarCurso.nome" name="nome" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select [(ngModel)]="cadastrarCurso.departamento" name="departamento" placeholder="Departamento">
+              <mat-option *ngFor="let dep of listaDepartamentos" [value]="dep.id">{{ dep.nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="!form.valid" (click)="salvar()"  mat-raised-button color="primary">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

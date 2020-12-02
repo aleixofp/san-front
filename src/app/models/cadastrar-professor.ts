@@ -1,8 +1,7 @@
-export interface CadastrarAluno {
+export interface CadastrarProfessor {
     nome: string;
     cpf: string;
     rg: string;
     email: string;
     dataNascimento: Date;
-    cursoSelecionado: number;
 }

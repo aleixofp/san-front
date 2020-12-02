@@ -3,6 +3,7 @@
   <mat-icon>school</mat-icon>
   <span class="titulo">san - sistema de alunos</span>
   <span class="spacer"></span>
+
   <button mat-icon-button (click)="sair()">
       <mat-icon>exit_to_app</mat-icon>
       <span>sair</span>
@@ -22,8 +23,8 @@
     </ng-template>
 
   </mat-tab>
-  <mat-tab tabindex="1">
-    <ng-template mat-tab-label *ngIf="verificaPermissao('VISUALIZAR_ALUNOS')" >
+  <mat-tab tabindex="1"  *ngIf="verificaPermissao('VISUALIZAR_ALUNOS')">
+    <ng-template mat-tab-label >
       <mat-icon *ngIf="selectedTab == 1">people</mat-icon>
       Alunos
     </ng-template>
@@ -33,28 +34,41 @@
     </ng-template>
 
   </mat-tab>
-  <mat-tab tabindex="2" *ngIf="false" >
 
+  <mat-tab tabindex="2"  *ngIf="verificaPermissao('VISUALIAR_CURSOS')">
     <ng-template mat-tab-label >
       <mat-icon *ngIf="selectedTab == 2">people</mat-icon>
+      Cursos
+    </ng-template>
+
+    <ng-template matTabContent>
+      <app-lista-cursos></app-lista-cursos>
+    </ng-template>
+
+  </mat-tab>
+
+  <mat-tab tabindex="3"  *ngIf="verificaPermissao('VISUALIZAR_DEPARTAMENTOS')">
+    <ng-template mat-tab-label >
+      <mat-icon *ngIf="selectedTab == 3">people</mat-icon>
+      Departamentos
+    </ng-template>
+
+    <ng-template matTabContent>
+      <app-lista-departamentos></app-lista-departamentos>
+    </ng-template>
+
+  </mat-tab>
+
+  <mat-tab tabindex="4"  *ngIf="verificaPermissao('VISUALIZAR_PROFESSORES')">
+    <ng-template mat-tab-label >
+      <mat-icon *ngIf="selectedTab == 4">people</mat-icon>
       Professores
     </ng-template>
 
     <ng-template matTabContent>
-      <app-lista-alunos></app-lista-alunos>
+      <app-lista-professores></app-lista-professores>
     </ng-template>
 
   </mat-tab>
-  <mat-tab tabindex="3" *ngIf="false">
 
-    <ng-template mat-tab-label *ngIf="verificaPermissao('VISUALIZAR_USUARIOS')" >
-      <mat-icon *ngIf="selectedTab == 3">people</mat-icon>
-      Usuários
-    </ng-template>
-
-    <ng-template matTabContent>
-      <app-lista-alunos></app-lista-alunos>
-    </ng-template>
-
-  </mat-tab>
 </mat-tab-group>

@@ -1,17 +1,18 @@
-import { CadastrarAluno } from './../models/cadastrar-aluno';
-import { Aluno } from './../models/aluno';
-import { catchError } from 'rxjs/operators';
+import { CadastrarCurso } from './../models/cadastrar-curso';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Curso } from '../models/curso';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlunoService {
+export class CursoService {
 
-  url = environment.server_url + '/aluno';
+  url = environment.server_url + '/curso';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,23 +20,13 @@ export class AlunoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAlunos(): Observable<Aluno[]> {
-    return this.httpClient.get<Aluno[]>(this.url + '/lista', this.httpOptions)
+  lista(): Observable<Curso[]> {
+    return this.httpClient.get<Curso[]>(this.url + '/lista', this.httpOptions)
       .pipe(catchError(error => this.handleError(error)));
   }
 
-  desativarAlunoPorId(id: number): Observable<string> {
-    return this.httpClient.get<string>(this.url + '/desativar/' + id, this.httpOptions)
-      .pipe(catchError(error => this.handleError(error)));
-  }
-
-  cadastrarAluno(aluno: CadastrarAluno): Observable<Aluno> {
-    return this.httpClient.post<Aluno>(this.url, aluno, this.httpOptions)
-      .pipe(catchError(error => this.handleError(error)));
-  }
-
-  validarCpf(cpf: string): Observable<Aluno> {
-    return this.httpClient.get<Aluno>(this.url + '/validarCpf/' + cpf, this.httpOptions)
+  cadastrarCurso(curso: CadastrarCurso): Observable<Curso> {
+    return this.httpClient.post<Curso>(this.url, curso, this.httpOptions)
       .pipe(catchError(error => this.handleError(error)));
   }
 

@@ -2,6 +2,7 @@ import { Usuario } from './../models/usuario';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-lobby',
@@ -13,7 +14,8 @@ export class LobbyComponent implements OnInit {
   usuario: Usuario | undefined;
   selectedTab = 0;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     const usuarioLogado = sessionStorage.getItem('usuarioLogado');

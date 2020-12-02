@@ -7,13 +7,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
   login = '';
   senha = '';
+  novaSenha = '';
   mostrarCarregamento = false;
+  isPrimeiroAcesso = false;
 
   constructor(private usuarioService: UsuarioService,
               private snackBar: MatSnackBar,
@@ -40,6 +42,20 @@ export class LoginComponent implements OnInit {
           }
         });
     }
+  }
+
+  salvar() {
+
+  }
+
+  primeiroAcesso(){
+    this.isPrimeiroAcesso = true;
+    this.login = '';
+    this.senha = '';
+  }
+
+  voltarDoPrimeiroAcesso(){
+    this.isPrimeiroAcesso = false;
   }
 
 

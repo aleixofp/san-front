@@ -4,14 +4,15 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { PerguntaSecreta } from '../models/pergunta-secreta';
 import { PerguntaSecretaUsuario } from '../models/pergunta-secreta-usuario';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PerguntaSecretaService {
 
-  url = 'http://localhost:8080/sanfatec/pergunta-secreta';
-  urlUsuario = 'http://localhost:8080/sanfatec/pergunta-secreta-usuario';
+  url = environment.server_url + '/pergunta-secreta';
+  urlUsuario = environment.server_url + '/pergunta-secreta-usuario';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

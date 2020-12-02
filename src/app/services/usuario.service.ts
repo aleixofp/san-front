@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class UsuarioService {
 
-  url = 'http://localhost:8080/sanfatec/usuario';
+  url = environment.server_url + '/usuario';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
