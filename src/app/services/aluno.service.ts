@@ -24,6 +24,11 @@ export class AlunoService {
       .pipe(catchError(error => this.handleError(error)));
   }
 
+  buscarAluno(id: number): Observable<Aluno> {
+    return this.httpClient.get<Aluno>(this.url + '/' + id, this.httpOptions)
+      .pipe(catchError(error => this.handleError(error)));
+  }
+
   desativarAlunoPorId(id: number): Observable<string> {
     return this.httpClient.get<string>(this.url + '/desativar/' + id, this.httpOptions)
       .pipe(catchError(error => this.handleError(error)));

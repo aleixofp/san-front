@@ -5,5 +5,6 @@ export interface Professor {
   rg: string;
   email: string;
   idade: number;
+  sexo: string;
   ativo: boolean;
 }

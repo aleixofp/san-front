@@ -16,7 +16,7 @@ import { DetalhesDepartamentoComponent } from './detalhes-departamento/detalhes-
 })
 export class ListaDepartamentosComponent implements OnInit {
 
-  colunas: string[] = ['nome', 'actions'];
+  colunas: string[] = ['nome'];
   listaCursos: Departamento[] = [];
   dataSource: MatTableDataSource<Departamento> = new MatTableDataSource<Departamento>();
 
@@ -54,6 +54,10 @@ export class ListaDepartamentosComponent implements OnInit {
       .subscribe(info => {
         this.listarDepartamentos();
       });
+  }
+
+  abrirDetalhes(id: number){
+
   }
 
 }

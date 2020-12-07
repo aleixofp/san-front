@@ -16,7 +16,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class ListaProfessoresComponent implements OnInit {
 
-  colunas: string[] = ['nome', 'cpf', 'ativo', 'actions'];
+  colunas: string[] = ['nome', 'cpf', 'ativo'];
   listaProfessores: Professor[] = [];
   dataSource: MatTableDataSource<Professor> = new MatTableDataSource<Professor>();
 
@@ -62,6 +62,10 @@ export class ListaProfessoresComponent implements OnInit {
       .subscribe(result => {
         this.snackBar.open('As alterações para o usuário foram efetuadas', 'OK', {duration: 3000});
       })
+  }
+
+  abrirDetalhes(id: number){
+
   }
 
 

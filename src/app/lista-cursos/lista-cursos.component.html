@@ -14,17 +14,6 @@
         <td mat-cell *matCellDef="let element"> {{ element.nome }} </td>
       </ng-container>
 
-
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Ações </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button>
-              <mat-icon>remove_red_eye</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-
       <tr mat-header-row *matHeaderRowDef="colunas"></tr>
       <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
 

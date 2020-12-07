@@ -1,3 +1,4 @@
+import { PrimeiroAcessoComponent } from './primeiro-acesso/primeiro-acesso.component';
 import { DetalhesProfessorComponent } from './lista-professores/detalhes-professor/detalhes-professor.component';
 import { ListaProfessoresComponent } from './lista-professores/lista-professores.component';
 import { ListaDepartamentosComponent } from './lista-departamentos/lista-departamentos.component';
@@ -32,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { EsqueciMinhaSenhaComponent } from './esqueci-minha-senha/esqueci-minha-senha.component';
 import { LobbyComponent } from './lobby/lobby.component';
@@ -41,6 +43,7 @@ import { HomeComponent } from './home/home.component';
 import { DetalhesAlunoComponent } from './lista-alunos/detalhes-aluno/detalhes-aluno.component';
 import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
 import { DetalhesDepartamentoComponent } from './lista-departamentos/detalhes-departamento/detalhes-departamento.component';
+import { MatriculaAlunoComponent } from './matricula-aluno/matricula-aluno.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,9 @@ import { DetalhesDepartamentoComponent } from './lista-departamentos/detalhes-de
     ListaDepartamentosComponent,
     DetalhesDepartamentoComponent,
     ListaProfessoresComponent,
-    DetalhesProfessorComponent
+    DetalhesProfessorComponent,
+    PrimeiroAcessoComponent,
+    MatriculaAlunoComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,8 @@ import { DetalhesDepartamentoComponent } from './lista-departamentos/detalhes-de
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

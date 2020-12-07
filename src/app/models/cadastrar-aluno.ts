@@ -4,5 +4,6 @@ export interface CadastrarAluno {
     rg: string;
     email: string;
     dataNascimento: Date;
+    sexo: string;
     cursoSelecionado: number;
 }

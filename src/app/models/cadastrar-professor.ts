@@ -3,5 +3,6 @@ export interface CadastrarProfessor {
     cpf: string;
     rg: string;
     email: string;
+    sexo: string;
     dataNascimento: Date;
 }

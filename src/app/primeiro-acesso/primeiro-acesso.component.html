@@ -1,0 +1,54 @@
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="informacoesFormGroup">
+    <form #informacoesForm="ngForm" [formGroup]="informacoesFormGroup">
+      <ng-template matStepLabel>Informações</ng-template>
+      <div class="campos">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Matrícula" formControlName="matricula" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" placeholder="CPF" formControlName="cpf" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <button [disabled]="!informacoesForm.valid" mat-button matStepperNext (click)="step2()">Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form #codigoVerificacaoForm="ngForm" [formGroup]="codigoVerificacaoFormGroup">
+      <ng-template matStepLabel>Verificação</ng-template>
+      <mat-label>Foi enviado um código de verificação para o seu email cadastrado: <strong>teste@gmail.com</strong></mat-label>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Código de verificação" formControlName="codigoVerificacao" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button [disabled]="segundosFaltantesParaReenviarEmail > 0" mat-button matStepperNext >Reenviar código
+          {{segundosFaltantesParaReenviarEmail > 0 ? segundosFaltantesParaReenviarEmail : ''}}
+        </button>
+        <button [disabled]="!codigoVerificacaoForm.valid" mat-button matStepperNext >Verificar</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form #senhaForm="ngForm" [formGroup]="senhaFormGroup">
+      <ng-template matStepLabel>Senha</ng-template>
+      <div class="campos">
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput type="text" formControlName="senha" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Digite novamente a senha</mat-label>
+          <input matInput type="text" formControlName="digiteNovamenteSenha" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button [disabled]="!senhaForm.valid" mat-button matStepperNext >Confirmar</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

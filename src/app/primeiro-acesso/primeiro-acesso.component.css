@@ -1,0 +1,8 @@
+.campos {
+  display: flex;
+  flex-direction: column;
+}
+
+.campos .mat-form-field {
+  width: 50%;
+}

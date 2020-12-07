@@ -18,6 +18,8 @@ export class DetalhesAlunoComponent implements OnInit {
   cadastrarAluno = {} as CadastrarAluno;
   listaCursos = [] as Curso[];
 
+  minDate = new Date();
+
   constructor(public dialogRef: MatDialogRef<DetalhesAlunoComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private snackBar: MatSnackBar,
@@ -26,6 +28,14 @@ export class DetalhesAlunoComponent implements OnInit {
               private cursoService: CursoService) { }
 
   ngOnInit(): void {
+
+    if (this.data){
+      this.cadastrarAluno.cpf = this.data.cpf;
+      this.cadastrarAluno.dataNascimento = this.data.dataNascimento;
+      this.cadastrarAluno.email = this.data.email;
+      this.cadastrarAluno.nome = this.data.nome;
+      this.cadastrarAluno.sexo = this.data.sexo;
+    }
     this.cursoService.lista()
       .subscribe(result => {
         this.listaCursos = result;

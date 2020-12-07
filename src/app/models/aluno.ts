@@ -7,5 +7,6 @@ export interface Aluno {
     email: string;
     idade: number;
     ativo: boolean;
+    sexo: string;
     matriculas: MatriculaCurso[];
 }

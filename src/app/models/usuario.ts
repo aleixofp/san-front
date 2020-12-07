@@ -5,5 +5,6 @@ export interface Usuario {
   senha: string;
   email: string;
   tipo: string;
+  primeiraVezLogando: boolean;
   permissoes: Permissao[];
 }

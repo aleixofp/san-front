@@ -14,7 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class ListaAlunosComponent implements OnInit {
 
-  colunas: string[] = ['nome', 'cpf', 'ativo', 'actions'];
+  colunas: string[] = ['nome', 'cpf', 'ativo'];
   listaAlunos: Aluno[] = [];
   dataSource: MatTableDataSource<Aluno> = new MatTableDataSource<Aluno>();
 
@@ -60,6 +60,25 @@ export class ListaAlunosComponent implements OnInit {
           this.dataSource = new MatTableDataSource<Aluno>(this.listaAlunos);
         });
       });
+  }
+
+  abrirDetalhes(id: number){
+    this.alunoService.buscarAluno(id)
+      .subscribe(result => {
+        const dialogRef = this.dialog.open(DetalhesAlunoComponent, {
+          width: '50%',
+          data: result
+        });
+        dialogRef.afterClosed()
+          .subscribe(info => {
+            this.alunoService.getAlunos()
+            .subscribe(result => {
+              this.listaAlunos = result;
+              this.dataSource = new MatTableDataSource<Aluno>(this.listaAlunos);
+            });
+          });
+      });
+
   }
 
 }

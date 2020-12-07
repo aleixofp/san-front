@@ -14,7 +14,7 @@ import { Curso } from '../models/curso';
 })
 export class ListaCursosComponent implements OnInit {
 
-  colunas: string[] = ['nome', 'actions'];
+  colunas: string[] = ['nome'];
   listaCursos: Curso[] = [];
   dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>();
 
@@ -52,6 +52,10 @@ export class ListaCursosComponent implements OnInit {
       .subscribe(info => {
         this.listarCursos();
       });
+  }
+
+  abrirDetalhes(id: number){
+
   }
 
 }

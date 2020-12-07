@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Usuario } from './../models/usuario';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,14 +16,14 @@ export class LobbyComponent implements OnInit {
   selectedTab = 0;
 
   constructor(private router: Router,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     const usuarioLogado = sessionStorage.getItem('usuarioLogado');
     if (usuarioLogado) {
       this.usuario = JSON.parse(usuarioLogado);
       console.log('Usuário logado: ' + this.usuario);
-
     } else {
       this.router.navigateByUrl('/login');
 

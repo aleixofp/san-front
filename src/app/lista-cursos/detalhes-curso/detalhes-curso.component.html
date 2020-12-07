@@ -9,8 +9,15 @@
           <input matInput placeholder="Nome do curso" [(ngModel)]="cadastrarCurso.nome" name="nome" required />
         </mat-form-field>
         <mat-form-field>
-          <mat-select [(ngModel)]="cadastrarCurso.departamento" name="departamento" placeholder="Departamento">
+          <mat-select [(ngModel)]="cadastrarCurso.departamento" name="departamento" placeholder="Departamento" required>
               <mat-option *ngFor="let dep of listaDepartamentos" [value]="dep.id">{{ dep.nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select [(ngModel)]="cadastrarCurso.turno" name="turno" placeholder="Turno" required>
+            <mat-option value="DIURNO">Diurno</mat-option>
+            <mat-option value="MATUTINO">Matutino</mat-option>
+            <mat-option value="NOTURNO">Noturno</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

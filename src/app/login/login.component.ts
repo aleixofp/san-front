@@ -1,8 +1,11 @@
+import { PrimeiroAcessoComponent } from './../primeiro-acesso/primeiro-acesso.component';
+import { EsqueciMinhaSenhaComponent } from './../esqueci-minha-senha/esqueci-minha-senha.component';
 import { UsuarioService } from './../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService,
               private snackBar: MatSnackBar,
-              private router: Router) { }
+              private router: Router,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (sessionStorage && sessionStorage.getItem('usuarioLogado')) {
@@ -44,20 +48,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  salvar() {
-
+  esqueciMinhaSenha(){
+    const dialogRef = this.dialog.open(EsqueciMinhaSenhaComponent, {
+      width: '50%'
+    });
   }
 
   primeiroAcesso(){
-    this.isPrimeiroAcesso = true;
-    this.login = '';
-    this.senha = '';
+    const dialogRef = this.dialog.open(PrimeiroAcessoComponent, {
+      width: '50%'
+    });
   }
-
-  voltarDoPrimeiroAcesso(){
-    this.isPrimeiroAcesso = false;
-  }
-
-
 
 }

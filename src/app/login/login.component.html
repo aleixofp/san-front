@@ -1,39 +1,27 @@
 <mat-card>
-  <mat-card-title *ngIf="!isPrimeiroAcesso" >Bem vindo ao SAN</mat-card-title>
-  <mat-card-title *ngIf="isPrimeiroAcesso" >Primeiro acesso</mat-card-title>
+  <mat-card-title >Bem vindo ao SAN</mat-card-title>
 <mat-card-content>
 <form #form="ngForm">
 <p>
   <mat-form-field>
-    <input type="text" matInput placeholder="Usuário" name="login" [(ngModel)]="login" required>
+    <input type="text" matInput placeholder="Login" name="login" [(ngModel)]="login" required>
   </mat-form-field>
 </p>
 
 <p>
   <mat-form-field>
-    <input type="password" required matInput [placeholder]="!isPrimeiroAcesso ? 'Senha' : 'Senha gerada'" name="senha" [(ngModel)]="senha">
+    <input type="password" required matInput placeholder="Senha" [(ngModel)]="senha">
   </mat-form-field>
 </p>
 
-<p *ngIf="isPrimeiroAcesso">
-  <mat-form-field>
-    <input type="password" required matInput placeholder="Nova senha" name="novaSenha" [(ngModel)]="novaSenha">
-  </mat-form-field>
-</p>
 
-<div *ngIf="!isPrimeiroAcesso"  class="button">
+<div class="button">
   <button mat-raised-button (click)="fazerLogin()" color="primary" [disabled]="!form.valid">Login</button>
-  <button mat-raised-button [routerLink]='["/esqueci-minha-senha"]' color="primary">Esqueci minha senha</button>
-
 </div>
 
-<!-- <div *ngIf="!isPrimeiroAcesso"  class="button">
-  <button mat-raised-button (click)="primeiroAcesso()" color="primary">Primeiro acesso</button>
-</div> -->
-
-<div *ngIf="isPrimeiroAcesso" class="button">
-  <button mat-raised-button (click)="salvar()" color="primary" [disabled]="!form.valid">Salvar</button>
-  <button mat-raised-button (click)="voltarDoPrimeiroAcesso()" color="primary">Voltar</button>
+<div class="button">
+  <button mat-button (click)="esqueciMinhaSenha()" color="primary">Esqueci minha senha</button>
+  <button mat-button (click)="primeiroAcesso()" color="primary">Primeiro acesso</button>
 </div>
 
 </form>
